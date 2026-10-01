@@ -1,28 +1,11 @@
-build_plan.md
-
-# Environment (secrets — never commit these)
 .env
-.env.local
-.env.production
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Dependencies
+.env.*
+!.env.example
 node_modules/
-backend/venv/
-backend/.venv/
 __pycache__/
-*.pyc
-*.pyo
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
+.venv/
+.next/
+additional_feature.md
+architecture.md
+build_plan.md
+idea.md

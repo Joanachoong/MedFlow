@@ -151,10 +151,10 @@ erDiagram
         timestamptz deleted_at "nurse soft delete"
     }
 
-    RECORD_ACCESS_GRANTS {
+    MEDICAL_RECORD_ACCESS_GRANTS {
         uuid id PK
         uuid patient_id FK
-        record_scope scope "medical_record now, care_record reserved"
+        record_scope scope "medical_record now"
         uuid granted_by FK "doctor"
         timestamptz granted_at
         timestamptz revoked_at "NULL means active"
@@ -256,8 +256,8 @@ erDiagram
     PATIENTS ||--o{ NURSE_INSTRUCTIONS : "has"
     PROFILES ||--o{ CARE_NOTES : "nurse writes"
     PATIENTS ||--o{ CARE_NOTES : "has"
-    PATIENTS ||--o{ RECORD_ACCESS_GRANTS : "access given"
-    PROFILES ||--o{ RECORD_ACCESS_GRANTS : "doctor grants"
+    PATIENTS ||--o{ MEDICAL_RECORD_ACCESS_GRANTS : "access given"
+    PROFILES ||--o{ MEDICAL_RECORD_ACCESS_GRANTS : "doctor grants"
 
     PATIENTS ||--o{ APPOINTMENTS : "books"
     PROFILES ||--o{ APPOINTMENTS : "doctor schedules"

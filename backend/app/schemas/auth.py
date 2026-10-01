@@ -1,29 +1,34 @@
-from pydantic import BaseModel
-from typing import Literal
+"""
+Auth schemas for the existing login/auth.py module.
+"""
+from __future__ import annotations
 
-UserRole = Literal["patient", "doctor", "nurse", "admin"]
+from pydantic import BaseModel, EmailStr
+
 
 class SignUpRequest(BaseModel):
-    email: str
+    email: EmailStr
     password: str
     full_name: str
-    role: UserRole
+    role: str = "patient"
     phone: str | None = None
 
+
 class LoginRequest(BaseModel):
-    email: str
+    email: EmailStr
     password: str
+
 
 class ProfileOut(BaseModel):
     id: str
     full_name: str
     email: str
-    role: UserRole
-    public_id: str | None
-    phone: str | None
+    role: str
+    public_id: str | None = None
+    phone: str | None = None
     created_at: str
+
 
 class AuthResponse(BaseModel):
     access_token: str
-    token_type: str = "bearer"
     profile: ProfileOut
